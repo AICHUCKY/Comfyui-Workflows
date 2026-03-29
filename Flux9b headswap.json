@@ -1,0 +1,686 @@
+{
+  "76": {
+    "inputs": {
+      "image": "Flux2-Klein_00003_.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "81": {
+    "inputs": {
+      "image": "Flux2-Klein_00004_.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "99": {
+    "inputs": {
+      "sampler_name": [
+        "133",
+        0
+      ]
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "100": {
+    "inputs": {
+      "steps": [
+        "132",
+        0
+      ],
+      "width": [
+        "115",
+        0
+      ],
+      "height": [
+        "115",
+        1
+      ]
+    },
+    "class_type": "Flux2Scheduler",
+    "_meta": {
+      "title": "Flux2Scheduler"
+    }
+  },
+  "101": {
+    "inputs": {
+      "cfg": [
+        "131",
+        0
+      ],
+      "model": [
+        "125",
+        0
+      ],
+      "positive": [
+        "112:162",
+        0
+      ],
+      "negative": [
+        "112:160",
+        0
+      ]
+    },
+    "class_type": "CFGGuider",
+    "_meta": {
+      "title": "CFGGuider"
+    }
+  },
+  "102": {
+    "inputs": {
+      "noise": [
+        "104",
+        0
+      ],
+      "guider": [
+        "101",
+        0
+      ],
+      "sampler": [
+        "99",
+        0
+      ],
+      "sigmas": [
+        "100",
+        0
+      ],
+      "latent_image": [
+        "114",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "103": {
+    "inputs": {
+      "samples": [
+        "102",
+        0
+      ],
+      "vae": [
+        "108",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "104": {
+    "inputs": {
+      "noise_seed": [
+        "129",
+        0
+      ]
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "106": {
+    "inputs": {
+      "clip_name": "qwen_3_8b_fp8mixed.safetensors",
+      "type": "flux2",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "107": {
+    "inputs": {
+      "text": [
+        "140",
+        0
+      ],
+      "clip": [
+        "106",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive Condition"
+    }
+  },
+  "108": {
+    "inputs": {
+      "vae_name": "flux2-vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "109": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "megapixels": 1,
+      "resolution_steps": 1,
+      "image": [
+        "76",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "ImageScaleToTotalPixels"
+    }
+  },
+  "110": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "megapixels": 1,
+      "resolution_steps": 1,
+      "image": [
+        "81",
+        0
+      ]
+    },
+    "class_type": "ImageScaleToTotalPixels",
+    "_meta": {
+      "title": "ImageScaleToTotalPixels"
+    }
+  },
+  "113": {
+    "inputs": {
+      "conditioning": [
+        "107",
+        0
+      ]
+    },
+    "class_type": "ConditioningZeroOut",
+    "_meta": {
+      "title": "ConditioningZeroOut"
+    }
+  },
+  "114": {
+    "inputs": {
+      "width": [
+        "115",
+        0
+      ],
+      "height": [
+        "115",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyFlux2LatentImage",
+    "_meta": {
+      "title": "Empty Flux 2 Latent"
+    }
+  },
+  "115": {
+    "inputs": {
+      "image": [
+        "109",
+        0
+      ]
+    },
+    "class_type": "GetImageSize",
+    "_meta": {
+      "title": "Get Image Size"
+    }
+  },
+  "118": {
+    "inputs": {
+      "clean_file_cache": true,
+      "clean_processes": true,
+      "clean_dlls": false,
+      "retry_times": 1,
+      "anything": [
+        "119",
+        0
+      ]
+    },
+    "class_type": "RAMCleanup",
+    "_meta": {
+      "title": "🎈RAM-Cleanup"
+    }
+  },
+  "119": {
+    "inputs": {
+      "offload_model": false,
+      "offload_cache": true,
+      "anything": [
+        "148",
+        0
+      ]
+    },
+    "class_type": "VRAMCleanup",
+    "_meta": {
+      "title": "🎈VRAM-Cleanup"
+    }
+  },
+  "125": {
+    "inputs": {
+      "lora_name": "bfs_head_v1_flux-klein_9b_step3500_rank128.safetensors",
+      "strength_model": 1,
+      "model": [
+        "128",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "127": {
+    "inputs": {
+      "rgthree_comparer": {
+        "images": [
+          {
+            "name": "A",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_dvvon_00001_.png&type=temp&subfolder=&preview=jpeg&rand=0.43053455710054966"
+          },
+          {
+            "name": "B",
+            "selected": true,
+            "url": "/api/view?filename=rgthree.compare._temp_dvvon_00002_.png&type=temp&subfolder=&preview=jpeg&rand=0.09717960671924364"
+          }
+        ]
+      },
+      "image_a": [
+        "76",
+        0
+      ],
+      "image_b": [
+        "103",
+        0
+      ]
+    },
+    "class_type": "Image Comparer (rgthree)",
+    "_meta": {
+      "title": "Image Comparer (rgthree)"
+    }
+  },
+  "128": {
+    "inputs": {
+      "gguf_name": "Flux-2-Klein-9B-KV-Q5_K_S.gguf"
+    },
+    "class_type": "LoaderGGUF",
+    "_meta": {
+      "title": "GGUF Loader"
+    }
+  },
+  "129": {
+    "inputs": {
+      "seed": 794609827386647,
+      "increment": 0
+    },
+    "class_type": "Seed Generator (Image Saver)",
+    "_meta": {
+      "title": "Seed Generator (Image Saver)"
+    }
+  },
+  "131": {
+    "inputs": {
+      "value": 1
+    },
+    "class_type": "easy float",
+    "_meta": {
+      "title": "Set CFG Value"
+    }
+  },
+  "132": {
+    "inputs": {
+      "value": 4
+    },
+    "class_type": "easy int",
+    "_meta": {
+      "title": "Int"
+    }
+  },
+  "133": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "Sampler Selector (Image Saver)",
+    "_meta": {
+      "title": "Sampler Selector (Image Saver)"
+    }
+  },
+  "139": {
+    "inputs": {
+      "inputcount": 2,
+      "delimiter": " ",
+      "return_list": false,
+      "Update inputs": null,
+      "string_1": [
+        "145",
+        0
+      ],
+      "string_2": [
+        "146",
+        0
+      ]
+    },
+    "class_type": "JoinStringMulti",
+    "_meta": {
+      "title": "Join String Multi"
+    }
+  },
+  "140": {
+    "inputs": {
+      "value": "head_swap: start with Picture 1 as the base image, keeping its lighting, environment, and background. remove the head from Picture 1 completely and replace it with the head from Picture 2, strictly preserving the hair, eye color, nose structure of Picture 2. copy the direction of the eye, head rotation, micro expressions from Picture 1, high quality, sharp details, 4k  Describe the expression in Picture 1 and copy it to the new image."
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Enter Editing Instructions Prompt Here"
+    }
+  },
+  "144": {
+    "inputs": {
+      "filename_prefix": [
+        "139",
+        0
+      ],
+      "file_format": "txt",
+      "pretty_json": false,
+      "text": [
+        "157:156",
+        0
+      ]
+    },
+    "class_type": "SimpleReadableMetadataSaveTextSG",
+    "_meta": {
+      "title": "Simple Readable Metadata Save Text-SG"
+    }
+  },
+  "145": {
+    "inputs": {
+      "value": "Flux2K_9B_HeadSwap_"
+    },
+    "class_type": "easy string",
+    "_meta": {
+      "title": "File Name Prefix"
+    }
+  },
+  "146": {
+    "inputs": {
+      "style": "%Y-%m-%d-%H_%M_%S"
+    },
+    "class_type": "Get Date Time String (JPS)",
+    "_meta": {
+      "title": "Get Date Time String (JPS)"
+    }
+  },
+  "148": {
+    "inputs": {
+      "filename": [
+        "139",
+        0
+      ],
+      "path": "",
+      "extension": "jpeg",
+      "lossless_webp": true,
+      "quality_jpeg_or_webp": 100,
+      "optimize_png": false,
+      "embed_workflow": false,
+      "save_workflow_as_json": false,
+      "counter": 0,
+      "time_format": "",
+      "show_preview": true,
+      "images": [
+        "103",
+        0
+      ]
+    },
+    "class_type": "Image Saver Simple",
+    "_meta": {
+      "title": "Image Saver Simple"
+    }
+  },
+  "157:149": {
+    "inputs": {
+      "value": "Prompt:\n\n"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Start Prompt"
+    }
+  },
+  "157:150": {
+    "inputs": {
+      "value": "\n"
+    },
+    "class_type": "PrimitiveStringMultiline",
+    "_meta": {
+      "title": "Empty New Line"
+    }
+  },
+  "157:151": {
+    "inputs": {
+      "prefix": "",
+      "suffix": "",
+      "input": [
+        "140",
+        0
+      ]
+    },
+    "class_type": "SomethingToString",
+    "_meta": {
+      "title": "Get Prompt"
+    }
+  },
+  "157:156": {
+    "inputs": {
+      "inputcount": 10,
+      "delimiter": " ",
+      "return_list": false,
+      "Update inputs": null,
+      "string_1": [
+        "157:149",
+        0
+      ],
+      "string_2": [
+        "157:151",
+        0
+      ],
+      "string_3": [
+        "157:150",
+        0
+      ],
+      "string_4": [
+        "157:152",
+        0
+      ],
+      "string_5": [
+        "157:150",
+        0
+      ],
+      "string_6": [
+        "157:155",
+        0
+      ],
+      "string_7": [
+        "157:150",
+        0
+      ],
+      "string_8": [
+        "157:153",
+        0
+      ],
+      "string_9": [
+        "157:150",
+        0
+      ],
+      "string_10": [
+        "157:154",
+        0
+      ]
+    },
+    "class_type": "JoinStringMulti",
+    "_meta": {
+      "title": "Join String Multi"
+    }
+  },
+  "157:152": {
+    "inputs": {
+      "prefix": "CFG Value : ",
+      "suffix": "",
+      "input": [
+        "131",
+        0
+      ]
+    },
+    "class_type": "SomethingToString",
+    "_meta": {
+      "title": "Something To String"
+    }
+  },
+  "157:155": {
+    "inputs": {
+      "prefix": "Steps : ",
+      "suffix": "",
+      "input": [
+        "132",
+        0
+      ]
+    },
+    "class_type": "SomethingToString",
+    "_meta": {
+      "title": "Get Number of Steps"
+    }
+  },
+  "157:153": {
+    "inputs": {
+      "prefix": "Sampler : ",
+      "suffix": "",
+      "input": [
+        "133",
+        0
+      ]
+    },
+    "class_type": "SomethingToString",
+    "_meta": {
+      "title": "Get Sampler Name"
+    }
+  },
+  "157:154": {
+    "inputs": {
+      "prefix": "Seed # : ",
+      "suffix": "",
+      "input": [
+        "129",
+        0
+      ]
+    },
+    "class_type": "SomethingToString",
+    "_meta": {
+      "title": "Get Seed Number"
+    }
+  },
+  "111:159": {
+    "inputs": {
+      "conditioning": [
+        "113",
+        0
+      ],
+      "latent": [
+        "111:78",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "ReferenceLatent"
+    }
+  },
+  "111:78": {
+    "inputs": {
+      "pixels": [
+        "109",
+        0
+      ],
+      "vae": [
+        "108",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "111:77": {
+    "inputs": {
+      "conditioning": [
+        "107",
+        0
+      ],
+      "latent": [
+        "111:78",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "ReferenceLatent"
+    }
+  },
+  "112:160": {
+    "inputs": {
+      "conditioning": [
+        "111:159",
+        0
+      ],
+      "latent": [
+        "112:161",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "ReferenceLatent"
+    }
+  },
+  "112:161": {
+    "inputs": {
+      "pixels": [
+        "110",
+        0
+      ],
+      "vae": [
+        "108",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "112:162": {
+    "inputs": {
+      "conditioning": [
+        "111:77",
+        0
+      ],
+      "latent": [
+        "112:161",
+        0
+      ]
+    },
+    "class_type": "ReferenceLatent",
+    "_meta": {
+      "title": "ReferenceLatent"
+    }
+  }
+}
