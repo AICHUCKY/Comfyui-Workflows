@@ -1,0 +1,768 @@
+{
+  "477": {
+    "inputs": {
+      "filename_prefix": "Qwen_image_2.1",
+      "format": "png",
+      "format.bit_depth": "8-bit",
+      "format.input_color_space": "sRGB",
+      "images": [
+        "478:457",
+        0
+      ]
+    },
+    "class_type": "SaveImageAdvanced",
+    "_meta": {
+      "title": "Save Image (Advanced)"
+    }
+  },
+  "479": {
+    "inputs": {
+      "aspect_ratio": "1:1 (Square)",
+      "megapixels": 1,
+      "multiple": 32
+    },
+    "class_type": "ResolutionSelector",
+    "_meta": {
+      "title": "Resolution Selector"
+    }
+  },
+  "494": {
+    "inputs": {
+      "seed": 337594016756943
+    },
+    "class_type": "SeedNode",
+    "_meta": {
+      "title": "Seed"
+    }
+  },
+  "501": {
+    "inputs": {
+      "filename_prefix": "Qwen_image_2.1",
+      "format": "png",
+      "format.bit_depth": "8-bit",
+      "format.input_color_space": "sRGB",
+      "images": [
+        "584:545",
+        0
+      ]
+    },
+    "class_type": "SaveImageAdvanced",
+    "_meta": {
+      "title": "Save Image (Advanced)"
+    }
+  },
+  "524": {
+    "inputs": {
+      "image": "Professional_character_reference_sheet,_plain_202605141604.jpeg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "525": {
+    "inputs": {
+      "image": "download (4).png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Reference Wardrobe"
+    }
+  },
+  "591": {
+    "inputs": {
+      "seed": 0
+    },
+    "class_type": "SeedNode",
+    "_meta": {
+      "title": "Seed"
+    }
+  },
+  "615": {
+    "inputs": {
+      "image": "Mannequin_ V2 (2).png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "617": {
+    "inputs": {
+      "filename_prefix": "Qwen_image_2.1_Sheet",
+      "format": "png",
+      "format.bit_depth": "8-bit",
+      "format.input_color_space": "sRGB",
+      "images": [
+        "616:610",
+        0
+      ]
+    },
+    "class_type": "SaveImageAdvanced",
+    "_meta": {
+      "title": "Save Image (Advanced)"
+    }
+  },
+  "618": {
+    "inputs": {
+      "aspect_ratio": "16:9 (Widescreen)",
+      "megapixels": 1,
+      "multiple": 32
+    },
+    "class_type": "ResolutionSelector",
+    "_meta": {
+      "title": "Resolution Selector"
+    }
+  },
+  "619": {
+    "inputs": {
+      "seed": 1092808008472646
+    },
+    "class_type": "SeedNode",
+    "_meta": {
+      "title": "Seed"
+    }
+  },
+  "630": {
+    "inputs": {
+      "filename_prefix": "Qwen_image_2.1_Sheet",
+      "format": "png",
+      "format.bit_depth": "8-bit",
+      "format.input_color_space": "sRGB",
+      "images": [
+        "629:624",
+        0
+      ]
+    },
+    "class_type": "SaveImageAdvanced",
+    "_meta": {
+      "title": "Save Image (Advanced)"
+    }
+  },
+  "631": {
+    "inputs": {
+      "aspect_ratio": "16:9 (Widescreen)",
+      "megapixels": 1,
+      "multiple": 32
+    },
+    "class_type": "ResolutionSelector",
+    "_meta": {
+      "title": "Resolution Selector"
+    }
+  },
+  "632": {
+    "inputs": {
+      "seed": 713016594819050
+    },
+    "class_type": "SeedNode",
+    "_meta": {
+      "title": "Seed"
+    }
+  },
+  "478:451": {
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "478:453": {
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "478:454": {
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "478:456": {
+    "inputs": {
+      "width": [
+        "479",
+        0
+      ],
+      "height": [
+        "479",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "478:457": {
+    "inputs": {
+      "samples": [
+        "478:458",
+        0
+      ],
+      "vae": [
+        "478:454",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "478:458": {
+    "inputs": {
+      "seed": [
+        "494",
+        0
+      ],
+      "steps": 30,
+      "cfg": 3.5,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "478:469",
+        0
+      ],
+      "positive": [
+        "478:474",
+        0
+      ],
+      "negative": [
+        "478:474",
+        1
+      ],
+      "latent_image": [
+        "478:468",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "478:468": {
+    "inputs": {
+      "switch": true,
+      "on_false": [
+        "478:474",
+        2
+      ],
+      "on_true": [
+        "478:456",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "If/Else Switch"
+    }
+  },
+  "478:469": {
+    "inputs": {
+      "device": "auto",
+      "dtype": "default",
+      "model": [
+        "478:451",
+        0
+      ]
+    },
+    "class_type": "QwenImage21Cache",
+    "_meta": {
+      "title": "Qwen Image 2.1 Cache"
+    }
+  },
+  "478:474": {
+    "inputs": {
+      "prompt": "Use `<image1>` as the **only outfit reference**.\n\nCreate a **photorealistic wardrobe reference sheet** that breaks down the clothing and wearable accessories from `<image1>`. Show **attire only**, **not the person**. No face, no skin, no visible body. Present the outfit on an **invisible mannequin / hollow garment display** with realistic shape and volume.\n\nExtract and preserve from `<image1>`:\n\n* all clothing pieces\n* overall silhouette\n* layering\n* colors\n* fabric materials and textures\n* seams, stitching, buttons, zippers, buckles\n* accessories\n* wrinkles, weathering, dust, fading, scuffs, damage, and other visible wear\n\nIf some parts are hidden, reconstruct them logically and consistently from the visible design.\n\nUse a **flexible multi-panel layout**. Include several full-outfit views such as **front, back, and side** where useful, plus **additional zoomed detail panels** for important parts like collar, sleeves, closures, straps, pockets, belt area, footwear, fabric texture, and unique signature features.\n\nStyle: **professional costume department wardrobe board**, clean layout, neutral studio background, soft shadows, realistic materials, sharp detail, production-ready presentation.\n\nImportant: preserve the outfit faithfully, do not redesign it, do not turn it into a character sheet, do not show a human model, and keep the result **photorealistic and detailed**.",
+      "negative_prompt": "face, head, mannequin , human model, person, character, face, head, skin, visible body, visible anatomy, hands, arms, legs, mannequin body, mannequin face, mannequin skin, mannequin head, mannequin limbs, posed character, character sheet, portrait, facial features, body reference, exposed flesh, floating human parts, redesign, altered costume, different outfit, invented clothing, missing clothing pieces, incorrect colors, changed materials, simplified details, missing accessories, extra accessories, incorrect layering, incorrect straps, incorrect belt, incorrect footwear, inconsistent outfit between panels, mismatched front and back, asymmetrical details not present in reference, duplicated accessories, fused garments, malformed clothing, impossible folds, broken seams, warped buttons, distorted buckles, incorrect closures, floating straps, disconnected straps, clipping, intersecting garments, melted fabric, plastic-looking fabric, fake texture, excessive wrinkles, excessive weathering, clean pristine clothing when reference is worn, fantasy embellishments, decorative additions, logos not present in reference, text, labels, captions, measurements, watermark, border clutter, busy background, environmental scene, cinematic scene, dramatic lighting, harsh shadows, illustration, concept art, sketch, painting, anime, cartoon, CGI, obvious 3D render, low resolution, blurry details, soft focus, noise, compression artifacts, text,",
+      "resolution": 0,
+      "clip": [
+        "478:453",
+        0
+      ],
+      "images.image_1": [
+        "525",
+        0
+      ],
+      "vae": [
+        "478:454",
+        0
+      ]
+    },
+    "class_type": "TextEncodeQwenImage21",
+    "_meta": {
+      "title": "Text Encode Qwen Image 2.1"
+    }
+  },
+  "584:541": {
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "584:542": {
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "584:543": {
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "584:544": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "584:545": {
+    "inputs": {
+      "samples": [
+        "584:546",
+        0
+      ],
+      "vae": [
+        "584:543",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "584:546": {
+    "inputs": {
+      "seed": [
+        "591",
+        0
+      ],
+      "steps": 30,
+      "cfg": 3,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "584:548",
+        0
+      ],
+      "positive": [
+        "584:549",
+        0
+      ],
+      "negative": [
+        "584:549",
+        1
+      ],
+      "latent_image": [
+        "584:547",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "584:547": {
+    "inputs": {
+      "switch": true,
+      "on_false": [
+        "584:549",
+        2
+      ],
+      "on_true": [
+        "584:544",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "If/Else Switch"
+    }
+  },
+  "584:548": {
+    "inputs": {
+      "device": "auto",
+      "dtype": "default",
+      "model": [
+        "584:541",
+        0
+      ]
+    },
+    "class_type": "QwenImage21Cache",
+    "_meta": {
+      "title": "Qwen Image 2.1 Cache"
+    }
+  },
+  "584:549": {
+    "inputs": {
+      "prompt": "Create a clean, photorealistic shoulders-up portrait of the same person from <image1>. Frame the subject from the top of the shoulders upward, including the full head, neck, and a small portion of the upper shoulders only. Do not show the torso, arms, or full outfit. Use a plain neutral grey background with soft, even studio lighting. Preserve the exact facial identity, apparent age, facial proportions, skin tone, skin texture, hairstyle, hairline, eyes, nose, lips, jawline, ears, and all distinctive facial features from the reference. Keep the expression neutral and natural. Clothing should be minimal and non-distracting, with only a simple neckline or plain upper garment visible, since wardrobe will be defined later. Keep the neck anatomically natural and proportionate, with a realistic shoulder connection and no elongated neck.",
+      "negative_prompt": "long neck, stretched anatomy, deformed anatomy, distorted proportions, extra limbs, missing limbs, cropped feet, cropped head, dynamic pose, action pose, bent posture, crossed arms, obstructed clothing, wardrobe inconsistency, altered outfit design, color shifts, material changes, incorrect garment proportions, missing garment layers, extra garment layers, accessory changes, incorrect belts, incorrect straps, misplaced pockets, altered seams, inconsistent footwear, asymmetrical clothing, duplicated accessories, fantasy embellishments, simplified costume details, exaggerated folds, distorted fabric, floating clothing, busy background, environmental background, dramatic lighting, harsh shadows, strong rim lighting, text, labels, watermark, multiple people, multiple outfits, fashion illustration, cartoon, anime, stylized render",
+      "resolution": 0,
+      "clip": [
+        "584:542",
+        0
+      ],
+      "images.image_1": [
+        "524",
+        0
+      ],
+      "vae": [
+        "584:543",
+        0
+      ]
+    },
+    "class_type": "TextEncodeQwenImage21",
+    "_meta": {
+      "title": "Text Encode Qwen Image 2.1"
+    }
+  },
+  "616:606": {
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "616:607": {
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "616:608": {
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "616:609": {
+    "inputs": {
+      "width": [
+        "618",
+        0
+      ],
+      "height": [
+        "618",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "616:610": {
+    "inputs": {
+      "samples": [
+        "616:611",
+        0
+      ],
+      "vae": [
+        "616:608",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "616:611": {
+    "inputs": {
+      "seed": [
+        "619",
+        0
+      ],
+      "steps": 40,
+      "cfg": 3.5,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "616:613",
+        0
+      ],
+      "positive": [
+        "616:614",
+        0
+      ],
+      "negative": [
+        "616:614",
+        1
+      ],
+      "latent_image": [
+        "616:612",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "616:612": {
+    "inputs": {
+      "switch": true,
+      "on_false": [
+        "616:614",
+        2
+      ],
+      "on_true": [
+        "616:609",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "If/Else Switch"
+    }
+  },
+  "616:613": {
+    "inputs": {
+      "device": "auto",
+      "dtype": "default",
+      "model": [
+        "616:606",
+        0
+      ]
+    },
+    "class_type": "QwenImage21Cache",
+    "_meta": {
+      "title": "Qwen Image 2.1 Cache"
+    }
+  },
+  "616:614": {
+    "inputs": {
+      "prompt": "Use <image1> as the exact layout, pose and framing template. It shows five panels on a grey background separated by thin dark divider lines: three full-body panels on the left and two head-and-shoulders panels stacked on the right, each containing a plain, featureless light-grey mannequin. Its five-panel structure, the position and height of every figure, the framing and crop of every panel, the body orientations, head directions, joint angles, foot placement, limb positions and hand positions all stay exactly as they are. Replace all five mannequins in place, including the blank faceless heads, bare bodies, hands and feet, with the person from <image2> wearing the complete outfit from <image3>. Every pixel of every mannequin is replaced by a real person with a real face, real hair, real skin and real clothing, and no plain grey mannequin surface remains anywhere in the result. Ignore any pose of the people in <image2> and <image3>; only the mannequins in <image1> define poses.\n\nIdentity lock: all five figures are one and the same man, and every head in every panel, including the small heads on the three full-body figures, has exactly the face, face shape, apparent age, skin tone, natural skin texture, hairstyle, hairline, hair color and hair texture of the person from <image2>, and the figures have the body build and proportions of that person. The hair on the full-body figures is the hair from <image2>.\n\nPanel 1, far left, full-body: the figure stands tall from just below the top edge to just above the bottom edge at the same height as the mannequin. The head is turned about 35 to 40 degrees toward the right edge of the panel in a three-quarter view, so the near ear on the left side of the head is visible and the face looks toward the right edge, not into the camera and not in full profile. The torso is turned about 30 degrees toward the right edge so both shoulders and the front of the chest stay visible. The feet are about a shoulder width apart, the foot nearest the left edge pointing toward the camera and the other foot angled toward the right edge. Both arms hang slightly away from the body with softly bent elbows and the hands relaxed beside the thighs with slightly curled fingers.\n\nPanel 2, second from left, full-body: a direct back view at the same height as the mannequin, the head facing straight away from the camera and showing the back of the hair of the person from <image2>, the shoulders level, the arms hanging slightly away from the torso with softly bent elbows and both hands relaxed beside the thighs with slightly curled fingers, and the feet about a shoulder width apart. It shows the natural rear construction of the outfit.\n\nPanel 3, third from left, full-body: the mirror-opposite of panel 1 and not a copy of it, at the same height as the mannequin. The head is turned about 35 to 40 degrees toward the left edge of the panel in a three-quarter view, so the near ear on the right side of the head is visible and the face looks toward the left edge, not into the camera and not in full profile. The torso is turned about 30 degrees toward the left edge so both shoulders and the front of the chest stay visible. The feet are about a shoulder width apart, the foot nearest the left edge pointing toward the left edge and the other foot angled toward the camera. Both arms hang slightly away from the body with softly bent elbows and the hands relaxed beside the thighs with slightly curled fingers.\n\nIn all three full-body panels both hands are fully visible with a natural shape of four fingers and a thumb, hanging where the mannequin's hands hang; sleeve cuffs, if any, end at the wrists so the whole hand shows, and any gloves or wraps come from <image3> only, otherwise the hands are bare and match the skin of the person from <image2>. The mannequin's bare feet are replaced by the footwear from <image3>, or by bare feet matching the person's skin if <image3> shows none. Every garment fits and drapes naturally over these limb positions so the gap between arms and torso, the bent elbows, the placement of the feet and the turned shoulders stay readable through the clothing.\n\nPanel 4, top right, head and shoulders: a frontal bust portrait framed exactly like the mannequin. The head is upright and faces straight into the camera with the face and hair of the person from <image2>, both ears visible symmetrically, the top of the hair close to the top edge of the panel, the chin about two thirds of the way down the panel, the head width about one third of the panel width, and the long neck running down to the shoulders, which slope out symmetrically toward both side edges and are cut off by the bottom edge at the collarbones, with open grey background on both sides of the head. Whatever the outfit from <image3> shows at the neck, collar and shoulders is worn there, exactly as on the full-body figures.\n\nPanel 5, bottom right, head and shoulders: a three-quarter portrait framed exactly like the mannequin. The head is turned about 40 degrees so the face points toward the right edge of the panel, the near cheek toward the camera, the ear on the left side of the head visible, the far side of the face foreshortened, and the eyes looking in the direction the head points, and the face is never turned toward the left edge in this panel. The top of the hair sits close to the top edge of the panel, the chin lands a little past the middle of the panel height, the head width is a little over one third of the panel width, the neck descends toward the lower left, and the collar and shoulder area of the outfit from <image3> fills the bottom of the panel and is cut off by the bottom edge. The hairstyle and facial proportions match panel 4 and the three full-body figures exactly.\n\nTake the face, age, skin tone, natural skin texture, hairstyle, hairline, hair color, hair texture, body build, hands and proportions from <image2> exactly, and ignore its clothing and background. Take every garment, layer, color, fabric, pattern, seam, strap, belt, buckle, closure, footwear, headwear, jewelry item, accessory, distinctive detail and weathering mark from <image3> exactly, and ignore any person or background in <image3>. The same person and the same outfit appear identically in all five panels; where the sides or back of the outfit are not visible in <image3>, continue the design naturally without adding, removing or recoloring anything.\n\nGive every panel a seamless light-grey studio background, and light all figures with bright, soft, even studio lighting and neutral white balance so fabric texture stays clearly visible, in the style of professional photorealistic character-reference photography. Final check: the result contains exactly five figures of one person, every panel shows a real human with a real face, all five heads show the identical face, age and hair of the person from <image2>, and no plain grey mannequin remains anywhere.",
+      "negative_prompt": "different person, multiple identities, identity drift, face drift, altered identity, generic face, different face between panels, different age, different skin tone, different hairstyle, different hair color, inconsistent hair, inconsistent body type, inconsistent proportions,\n\nmannequin appearance, mannequin face, mannequin head, mannequin anatomy, mannequin joints, white mannequin material, plastic mannequin, doll-like body, featureless face,\n\nclothing from image2, mixed outfits, wardrobe blending, alternate outfit, different outfit between panels, wardrobe drift, redesigned costume, restyled costume, simplified costume, recolored costume, invented garments, invented accessories, missing garments, missing accessories, extra accessories, incorrect layering, incorrect collar, incorrect sleeves, incorrect belt, incorrect straps, incorrect harness, incorrect jewelry, incorrect footwear, mismatched front and back wardrobe, unrelated rear design,\n\nblack clothing replacing colored clothing, dark red rendered as black, burgundy rendered as black, maroon rendered as black, brown rendered as black, charcoal rendered as black, inaccurate garment color, color shift, muddy colors, loss of material separation,\n\nunderexposed, dark exposure, low-key lighting, cinematic lighting, dramatic lighting, moody lighting, dim lighting, nighttime lighting, dark studio, dark background, black background, heavy shadows, harsh shadows, crushed blacks, black clipping, shadow clipping, excessive contrast, high contrast, dark color grading, muddy shadows, murky clothing, silhouette clothing, loss of shadow detail, hidden fabric texture, obscured garment details, obscured seams, obscured straps, obscured buckles, vignette,\n\nwrong layout, changed composition, extra panels, missing panels, two panels, four panels, merged panels, overlapping panels, reordered panels, changed panel proportions,\n\ncropped full body, cropped feet, missing footwear, incorrect scale,\n\nfront view in center panel, duplicate front view, three front views, side view in center panel, three-quarter center view, incorrect back view, face visible in back view, head turned toward camera in back view,\n\nfull body in right panel, waist-up right panel, small portrait, small face, distant portrait, side-profile portrait, three-quarter portrait, excessive torso in portrait panel, cropped face,\n\ndeformed face, facial distortion, facial asymmetry, malformed eyes, crossed eyes, bad anatomy, malformed hands, extra fingers, missing fingers, extra limbs, duplicate limbs, fused limbs, distorted feet, broken anatomy,\n\nfloating straps, disconnected straps, fused garments, clothing clipping, malformed clothing, impossible folds, melted fabric, plastic-looking fabric, fake leather,\n\nillustration, concept art, character art, anime, cartoon, comic, painting, sketch, stylized rendering, fantasy redesign, game character, CGI, 3D render, beauty filter, waxy skin, plastic skin, excessive skin smoothing,\n\nblurry, low resolution, soft details, motion blur, noise, compression artifacts, oversharpening, text, captions, labels, annotations, watermark, logo",
+      "resolution": 0,
+      "clip": [
+        "616:607",
+        0
+      ],
+      "images.image_1": [
+        "615",
+        0
+      ],
+      "vae": [
+        "616:608",
+        0
+      ],
+      "images.image_2": [
+        "501",
+        0
+      ],
+      "images.image_3": [
+        "477",
+        0
+      ]
+    },
+    "class_type": "TextEncodeQwenImage21",
+    "_meta": {
+      "title": "Text Encode Qwen Image 2.1"
+    }
+  },
+  "629:620": {
+    "inputs": {
+      "unet_name": "qwen_image_2.1_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "629:621": {
+    "inputs": {
+      "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+      "type": "qwen_image",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "Load CLIP"
+    }
+  },
+  "629:622": {
+    "inputs": {
+      "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "629:623": {
+    "inputs": {
+      "width": [
+        "631",
+        0
+      ],
+      "height": [
+        "631",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "629:624": {
+    "inputs": {
+      "samples": [
+        "629:625",
+        0
+      ],
+      "vae": [
+        "629:622",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "629:625": {
+    "inputs": {
+      "seed": [
+        "632",
+        0
+      ],
+      "steps": 35,
+      "cfg": 3,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "629:627",
+        0
+      ],
+      "positive": [
+        "629:628",
+        0
+      ],
+      "negative": [
+        "629:628",
+        1
+      ],
+      "latent_image": [
+        "629:626",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "629:626": {
+    "inputs": {
+      "switch": true,
+      "on_false": [
+        "629:628",
+        2
+      ],
+      "on_true": [
+        "629:623",
+        0
+      ]
+    },
+    "class_type": "ComfySwitchNode",
+    "_meta": {
+      "title": "If/Else Switch"
+    }
+  },
+  "629:627": {
+    "inputs": {
+      "device": "auto",
+      "dtype": "default",
+      "model": [
+        "629:620",
+        0
+      ]
+    },
+    "class_type": "QwenImage21Cache",
+    "_meta": {
+      "title": "Qwen Image 2.1 Cache"
+    }
+  },
+  "629:628": {
+    "inputs": {
+      "prompt": "Create one photorealistic character reference sheet of the person from <image1>, using <image1> as the face and identity source and <image2> as the wardrobe source. The sheet is a clean grid of 10 panels separated by thin dark divider lines, all on the same seamless light-grey studio background. The left two thirds of the sheet is a grid of 8 small full-body panels in two rows of four, each panel a tall vertical rectangle. The right third of the sheet is a column of 2 large square close-up panels stacked vertically, each as tall as one row of small panels. Every panel contains exactly one figure, so the sheet contains exactly 10 figures of the same person from <image1>, with no other people, no text, no labels, no captions, no logos and no props anywhere. In every panel the person's hands are empty: they hold no weapon and no object of any kind, and any gesture such as aiming is mimed with bare or gloved empty hands.\n\nIdentity, from <image1> only: every head in every panel, including the small heads in the full-body panels, has exactly the face, face shape, gender presentation, apparent age, skin tone, natural skin texture, hairstyle, hairline, hair color and hair texture of the person in <image1>, with the same facial proportions in every view. Ignore the clothing, pose, lighting and background of <image1>. The body has a natural, fit build and height in proportion to the neck and shoulders visible in <image1>, and this build and height are identical in all ten panels. Natural hands with four fingers and a thumb, bare unless <image2> shows gloves.\n\nWardrobe, from <image2> only: the person from <image1> wears the complete outfit from <image2>, with every garment, layer, color, fabric, pattern, seam, strap, belt, buckle, closure, piece of footwear, headwear, jewelry item, accessory, distinctive detail and weathering mark exactly as shown, and ignore the face, hair, pose, body and background of any person in <image2>. The identical outfit appears in all ten panels, and where the sides, back or other angles of the outfit are not visible in <image2>, continue the design naturally without adding, removing or recoloring anything, so that the back views show the natural rear construction of the same garments. The outfit stretches, folds and swings naturally with each movement, and sleeve cuffs, if any, end at the wrists so the hands stay visible.\n\nSmall full-body panels: in each of the 8 panels the whole body, from head to shoes, including any extended arm or leg, fits fully inside the panel with a small margin all round, the person from <image1> is drawn at the same scale in every panel so their standing height is the same, the expression is focused and determined unless stated otherwise, and a soft contact shadow lies on the floor beneath the feet, or a faint shadow beneath the body in a jump. Each panel shows a clearly different pose from a clearly different camera position around the person, so the eight panels together show the person from the front, from both sides, from three-quarter angles and from behind. The camera position of each panel is stated below and is followed exactly. In every panel the head faces the direction the pose calls for and is not turned toward the camera unless stated. Top row, left to right. Panel 1, walking, camera at the person's side for a pure side profile: the person walks toward the right edge of the panel with the camera seeing only their left side, a natural mid-stride with the near leg stepping forward and the heel about to touch the ground, the far leg pushing off behind with the heel lifted, the arms swinging in opposition to the legs with softly bent elbows, the torso upright, and the head in profile facing the direction of travel with a calm expression. Panel 2, running, camera in front and slightly to the left of the person for a three-quarter front view: the person runs toward the camera and toward the left edge of the panel at an angle, the torso leaning forward, the near knee driving high, the far leg kicked back with the foot off the ground, both arms pumping with the elbows bent at about 90 degrees and both fists loosely closed, and the head facing the direction of travel with the face visible in three-quarter view. Panel 3, jumping, camera directly behind the person for a back view: the person jumps straight up with the back to the camera and the head facing straight away from the camera, both feet clearly off the ground with the knees bent and tucked, both arms raised above the head with open hands, the back of the hair and the rear of the outfit fully visible, and a faint shadow on the floor beneath the body. Panel 4, punching, camera at the person's side for a pure side profile: the person throws a straight punch toward the left edge of the panel with the camera seeing only their right side, the front arm fully extended toward the left edge with a closed fist, the rear fist guarding the chin, the feet wide apart in a lunge with the front knee bent and the back leg straight, the shoulders rotated into the punch, and the head in profile facing the left edge. Bottom row, left to right. Panel 5, kicking, camera behind and slightly to the right of the person for a three-quarter back view: the person performs a high roundhouse kick toward the right edge of the panel with the back and one shoulder toward the camera, the standing leg planted and straight, the kicking leg extended horizontally at hip height toward the right edge with the foot flexed, the torso leaning away, both fists raised in a guard near the chin, and the head turned toward the right edge so that only the back and side of the head and a small part of the cheek are visible. Panel 6, aiming, camera directly behind the person for a back view: the person stands with the back to the camera and the head facing straight away from the camera, both arms extended straight forward away from the camera with the empty hands clasped together in a mimed pistol grip, the feet staggered with the front knee slightly bent, the back of the hair and the rear of the outfit fully visible, and no weapon in the hands. Panel 7, crouching, camera in front and slightly to the right of the person for a three-quarter front view: the person is in a low tactical crouch with one knee on the ground and the other knee raised, the torso leaning forward toward the camera and toward the left edge of the panel, one hand touching the floor for balance, and the head turned to look ahead toward the left edge with the face visible in three-quarter view. Panel 8, standing, camera directly in front of the person for a straight frontal view: the person stands in a relaxed, confident stance facing the camera, the arms folded across the chest with both hands visible, the weight on one leg with the other knee slightly bent, the head level with the eyes looking into the camera, and a calm expression with a slight smile.\n\nLarge close-up panels, right column, each a head, neck and tops of the shoulders portrait with the face large and dominant, filling about two thirds of the panel height, the top of the hair close to the top edge of the panel, the chin about three quarters of the way down, and the collar and shoulder area of the outfit from <image2> cut off by the bottom edge, with a neutral expression and soft even light. Panel 9, top: a straight frontal view with the head upright, both ears visible symmetrically, and the eyes looking straight into the camera. Panel 10, bottom: a three-quarter view with the head turned about 40 degrees so the face points toward the right edge of the panel, the near cheek toward the camera, the ear on the left side of the head visible, the far side of the face foreshortened, and the eyes looking in the direction the head points, and the face is never turned toward the left edge in this panel. The hairstyle, hairline and facial proportions are identical in both close-ups and in all eight full-body panels.\n\nLight every panel with bright, soft, even studio lighting and neutral white balance, with accurate skin tones and accurate outfit colors, so fabric texture stays clearly visible even on dark materials, in the style of professional photorealistic character-reference photography, all shot in the same session with the same camera and lens. Final check: exactly 10 figures of the same person from <image1>, all with the identical face, age and hair from <image1> and the identical outfit from <image2>, every panel showing a real human, eight clearly different poses, at least two panels seen from directly behind, at least two in pure side profile and at least one in three-quarter back view, so that not all figures face the camera, no weapons or props anywhere, and no text anywhere.",
+      "negative_prompt": "different person, multiple identities, identity drift, face drift, altered identity, generic face, different face between panels, different age, different skin tone, different hairstyle, different hair color, inconsistent hair, inconsistent body type, inconsistent proportions,\n\nmannequin appearance, mannequin face, mannequin head, mannequin anatomy, mannequin joints, white mannequin material, plastic mannequin, doll-like body, featureless face,\n\nclothing from image2, mixed outfits, wardrobe blending, alternate outfit, different outfit between panels, wardrobe drift, redesigned costume, restyled costume, simplified costume, recolored costume, invented garments, invented accessories, missing garments, missing accessories, extra accessories, incorrect layering, incorrect collar, incorrect sleeves, incorrect belt, incorrect straps, incorrect harness, incorrect jewelry, incorrect footwear, mismatched front and back wardrobe, unrelated rear design,\n\nblack clothing replacing colored clothing, dark red rendered as black, burgundy rendered as black, maroon rendered as black, brown rendered as black, charcoal rendered as black, inaccurate garment color, color shift, muddy colors, loss of material separation,\n\nunderexposed, dark exposure, low-key lighting, cinematic lighting, dramatic lighting, moody lighting, dim lighting, nighttime lighting, dark studio, dark background, black background, heavy shadows, harsh shadows, crushed blacks, black clipping, shadow clipping, excessive contrast, high contrast, dark color grading, muddy shadows, murky clothing, silhouette clothing, loss of shadow detail, hidden fabric texture, obscured garment details, obscured seams, obscured straps, obscured buckles, vignette,\n\nwrong layout, changed composition, extra panels, missing panels, two panels, four panels, merged panels, overlapping panels, reordered panels, changed panel proportions,\n\ncropped full body, cropped feet, missing footwear, incorrect scale,\n\nfront view in center panel, duplicate front view, three front views, side view in center panel, three-quarter center view, incorrect back view, face visible in back view, head turned toward camera in back view,\n\nfull body in right panel, waist-up right panel, small portrait, small face, distant portrait, side-profile portrait, three-quarter portrait, excessive torso in portrait panel, cropped face,\n\ndeformed face, facial distortion, facial asymmetry, malformed eyes, crossed eyes, bad anatomy, malformed hands, extra fingers, missing fingers, extra limbs, duplicate limbs, fused limbs, distorted feet, broken anatomy,\n\nfloating straps, disconnected straps, fused garments, clothing clipping, malformed clothing, impossible folds, melted fabric, plastic-looking fabric, fake leather,\n\nillustration, concept art, character art, anime, cartoon, comic, painting, sketch, stylized rendering, fantasy redesign, game character, CGI, 3D render, beauty filter, waxy skin, plastic skin, excessive skin smoothing,\n\nblurry, low resolution, soft details, motion blur, noise, compression artifacts, oversharpening, text, captions, labels, annotations, watermark, logo",
+      "resolution": 0,
+      "clip": [
+        "629:621",
+        0
+      ],
+      "images.image_1": [
+        "501",
+        0
+      ],
+      "vae": [
+        "629:622",
+        0
+      ],
+      "images.image_2": [
+        "477",
+        0
+      ]
+    },
+    "class_type": "TextEncodeQwenImage21",
+    "_meta": {
+      "title": "Text Encode Qwen Image 2.1"
+    }
+  }
+}
