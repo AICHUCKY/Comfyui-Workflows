@@ -1,0 +1,152 @@
+{
+  "1": {
+    "inputs": {
+      "inference_weight_mode": "official_int8_sharded",
+      "attention_mode": "sdpa",
+      "auto_download_missing_weights": true,
+      "vae": "LongCat-Video-Avatar-vae.safetensors",
+      "lora": "longcat-avatar-dmd_lora.safetensors"
+    },
+    "class_type": "LongCat_Video_SM_Model",
+    "_meta": {
+      "title": "(auto)Load LongCat Avatar Model"
+    }
+  },
+  "2": {
+    "inputs": {
+      "stage_1": "ai2v",
+      "resolution": "480p",
+      "seed": 585152663,
+      "steps": 8,
+      "text_guidance_scale": 1,
+      "audio_guidance_scale": 1,
+      "ref_img_index": 12,
+      "mask_frame_range": 5,
+      "block_num": 8,
+      "mux_audio_path": "",
+      "offload_device": "cpu",
+      "debug_mode": false,
+      "model": [
+        "1",
+        0
+      ],
+      "te_cond": [
+        "5",
+        0
+      ],
+      "au_cond": [
+        "22",
+        0
+      ],
+      "image": [
+        "7",
+        0
+      ],
+      "mux_audio": [
+        "15",
+        0
+      ]
+    },
+    "class_type": "LongCat_Video_SM_Sampler",
+    "_meta": {
+      "title": "LongCat Avatar Sampler"
+    }
+  },
+  "3": {
+    "inputs": {
+      "fps": 25,
+      "bit_depth": "auto",
+      "color_space": "sRGB",
+      "chroma_subsampling": "auto",
+      "codec": "none",
+      "images": [
+        "2",
+        0
+      ],
+      "audio": [
+        "15",
+        0
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "Create Video"
+    }
+  },
+  "4": {
+    "inputs": {
+      "filename_prefix": "video/ComfyUI",
+      "format": "mp4",
+      "format.codec": "h264",
+      "format.codec.encoding": "auto",
+      "codec": "auto",
+      "video": [
+        "3",
+        0
+      ]
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "Save Video"
+    }
+  },
+  "5": {
+    "inputs": {
+      "text_encoder_root": "LongCat-Video",
+      "auto_download_missing_text_encoder": true,
+      "offload_device": "cpu",
+      "prompt": "A person speaking naturally to the camera, steady lighting, best quality.",
+      "negative_prompt": "Close-up, Bright tones, overexposed, static, blurred details, subtitles, style, works, paintings, images, static, overall gray, worst quality, low quality, JPEG compression residue, ugly, incomplete, extra fingers, poorly drawn hands, poorly drawn faces, deformed, disfigured, misshapen limbs, fused fingers, still picture, messy background, three legs, many people in the background, walking backwards."
+    },
+    "class_type": "LongCat_Video_SM_Encode",
+    "_meta": {
+      "title": "LongCat Avatar Text Encode"
+    }
+  },
+  "7": {
+    "inputs": {
+      "image": ""
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "15": {
+    "inputs": {
+      "audio": ""
+    },
+    "class_type": "LoadAudio",
+    "_meta": {
+      "title": "Load Audio"
+    }
+  },
+  "22": {
+    "inputs": {
+      "save_fps": 25,
+      "audio_type": "para",
+      "p_box": "",
+      "audio_encoder": [
+        "27",
+        0
+      ],
+      "audio": [
+        "15",
+        0
+      ]
+    },
+    "class_type": "LongCat_Video_SM_Audio",
+    "_meta": {
+      "title": "LongCat Avatar Audio Encode"
+    }
+  },
+  "27": {
+    "inputs": {
+      "audio_encoder": "whisper-large-v3.safetensors"
+    },
+    "class_type": "LongCat_Video_SM_WhisperModel",
+    "_meta": {
+      "title": "LongCat Avatar Whisper"
+    }
+  }
+}
